@@ -45,7 +45,7 @@ section{
     /* Quikc way of pushing placeholder aside  */
     /* text-indent: 12px; */
 
-}
+}     
 
 
 
@@ -58,6 +58,7 @@ section{
     border-radius: 4px;
     font-size: 1.125rem;
     font-weight: 500;
+    cursor: pointer;   
 }  
 
 .form-btn:hover{

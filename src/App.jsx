@@ -1,14 +1,13 @@
 import Header from "./Components/Header"
 import Meme from "./Components/Meme"
 
-function App() {
+function App() {  
 
   return (
     <div className="App">   
-
-      <Header />   
-      <Meme />
-    </div>
+      <Header />    
+      <Meme   />
+    </div>   
   )
 }
 
