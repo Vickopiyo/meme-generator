@@ -1,0 +1,70 @@
+
+*{
+    box-sizing: border-box;
+}
+
+body{ 
+    margin: 0;       
+
+}      
+
+.header{           
+
+    display: flex;
+    align-items: center;   
+    justify-content: space-between;     
+    height: 65px; 
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);    
+    color: white;  
+    padding: 15px 25px;       
+   
+}     
+
+.header-subtitle{
+    font-size: 1.125rem; 
+    font-weight: 600;
+}   
+
+
+section{
+    padding: 20px;
+  }   
+
+.form{
+    display: grid; 
+    grid-template:  40px 40px / 1fr 1fr ;
+    gap: 12px;    
+    max-width: 600px;
+    margin: 0 auto;
+}     
+.form-input{
+    border-radius: 5px;
+    border: 1px solid #D5D4D8;   
+    padding: 12px 12px;
+
+    /* Quikc way of pushing placeholder aside  */
+    /* text-indent: 12px; */
+
+}
+
+
+
+.form-btn{
+    grid-column: 1 / -1 ;
+    background: linear-gradient(90.41deg, #b29abb 1.14%, #bc36e9 100%); 
+    color: #fff; 
+    outline: none; 
+    border: none;
+    border-radius: 4px;
+    font-size: 1.125rem;
+    font-weight: 500;
+}  
+
+.form-btn:hover{
+    opacity: .8;
+}
+
+
+
+
+

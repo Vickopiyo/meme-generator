@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const Header = () => {
   return (
-    <div>  
+    <header className="header">
+      <h1>Meme Generator</h1>
+      <h2  className="header-subtitle">React Project - 3</h2>
+    </header>
+  ); 
+};
 
-      
-    </div>
-  )
-}
-
-export default Header
+export default Header;
