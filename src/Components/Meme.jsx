@@ -46,13 +46,13 @@ function getMemeImage(){
     
          const memesArray = memesData.data.memes 
          const randomNumber = Math.floor(Math.random()*memesArray.length)    
-     
-
         //  You dont previous state though so  setMeme(memesArray[randomNumber].url) works fine 
 
         setMeme(prevMeme =>  prevMeme = memesArray[randomNumber].url) 
-}        
-     
+}            
+
+    //  callback in  setState is when there is need to access prevstate before updating.Common use is toggling(true to false or false to true) 
+            
   return (    
 
     <section>
@@ -64,11 +64,9 @@ function getMemeImage(){
         </div>    
         <div className="meme">  
         <img  src={meme}   alt="meme!"  />   
-    
         </div> 
-
     </section>    
   )
-}   
+}                   
 
 export default Meme
