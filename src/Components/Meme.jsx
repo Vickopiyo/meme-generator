@@ -79,10 +79,13 @@ const Meme = () => {
 
 // function toogleFavorite(){   
 
-//    setContact( prevState =>   
+//    setContact( prevState =>   {
 
-//       {...prevState, isFavorite : !prevState.isFavorite}  
-      
+//    return   {...prevState, isFavorite : !prevState.isFavorite}     
+    // }     
+
+    //  OR if object return is a oneliner then wrap is paranthesis    ({...prevState, isFavorite : !prevState.isFavorite})
+    // 1st Braces {} are interpreted as function body  
 //       )
 // }     
    
@@ -98,21 +101,29 @@ const Meme = () => {
 
 
 
+ const [meme, setMeme]= useState({ 
 
+  toptext: "",
+  bottomtext: "",
+  randomImage: "http://i.imgflip.com/1bij.jpg"    
 
+ })    
 
-
- const [meme, setMeme]= useState("")       
-      
 
 function getMemeImage(){         
     
-         const memesArray = memesData.data.memes 
+         const memesArray = memesData.data.memes   
+
          const randomNumber = Math.floor(Math.random()*memesArray.length)      
+
+          //  Accessing random images (memes) 
+         const url =  memesArray[randomNumber].url 
 
         //  You dont need to access previous state  so setMeme(memesArray[randomNumber].url) works fine 
 
-        setMeme(   prevMeme =>  prevMeme = memesArray[randomNumber].url) 
+        // setMeme(   prevMeme =>  prevMeme = memesArray[randomNumber].url)     
+
+          setMeme((prevstate )  => ({...prevstate,   randomImage: url }))     
 }            
 
     //  callback in setState is when there is need to access prevstate before updating.Common use is toggling(true to false or false to true) setState( prevState => !prevState )
@@ -128,7 +139,7 @@ function getMemeImage(){
             <button  onClick={getMemeImage} className='form-btn '>Generate Meme</button> 
         </div>    
         <div className="meme">                
-        <img  src={meme}   alt="meme!"  />   
+        <img  src={meme.randomImage}   alt="meme!"  />   
         </div>     
     </section>    
   )         
