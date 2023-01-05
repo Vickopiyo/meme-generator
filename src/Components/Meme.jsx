@@ -8,15 +8,19 @@ const Meme = () => {
         
     //   const [count, setCount]= useState(0)     
 
-    // NEVER!! -- setCount( count++(count = count + 1) )--Reason ? it modifies state directly    
-    // BEST Practice for updating state is through callback func => setCount(prevCount => prevCount + 1)
+    // NEVER!! -- setCount( count++(count = count + 1) )--Reason ? it modifies state directly..similar to state.map() 
+      
+    //  NB : ALWAYS UPDATE STATE USING THE SETTER FUNCTION 
+    
+    // BEST Practice for updating state is through callback func => setCount(prevCount => prevCount + 1)  
+
     // NAME--equivalent props
     
-    //   function greeting(name){ 
-    // //TIMEOFDAY--equivalent to State  
-           
-    //     const  date = new Date()  
+    //   function greeting(name){   
 
+          //TIMEOFDAY--equivalent to State  
+
+    //     const  date = new Date()  
     //     const time = date.getHours()     
 
     //     let timeOfDay  
@@ -25,7 +29,8 @@ const Meme = () => {
     //         timeOfDay = "Good Morning"
     //     }else if(time >=12 && time < 19 ){
     //         timeOfDay = "Good Afternoon"
-    //     } else {
+    //     } else {  
+      
     //         timeOfDay = "Good Evening"
     //     }    
 
@@ -48,7 +53,7 @@ function getMemeImage(){
          const randomNumber = Math.floor(Math.random()*memesArray.length)    
         //  You dont previous state though so  setMeme(memesArray[randomNumber].url) works fine 
 
-        setMeme(prevMeme =>  prevMeme = memesArray[randomNumber].url) 
+        setMeme(   prevMeme =>  prevMeme = memesArray[randomNumber].url) 
 }            
 
     //  callback in  setState is when there is need to access prevstate before updating.Common use is toggling(true to false or false to true) 
@@ -66,7 +71,7 @@ function getMemeImage(){
         <img  src={meme}   alt="meme!"  />   
         </div> 
     </section>    
-  )
+  )         
 }                   
 
-export default Meme
+export default Meme                
