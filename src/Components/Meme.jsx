@@ -2,17 +2,35 @@ import React, { useState } from 'react'
 import memesData from "../Components/MemeData"
 
 const Meme = () => {      
-    
+                  
     // Props should always be immutable       
     // State(variables in a function)--values managed within a component which keeps changing   
+
+    // change of state triggers rerendering Component where it is declared and any children component it has.Point to note it does not affect components above it or Component that doesnt depend on the state.
         
     //   const [count, setCount]= useState(0)     
 
     // NEVER!! -- setCount( count++(count = count + 1) )--Reason ? it modifies state directly..similar to state.map() 
       
-    //  NB : ALWAYS UPDATE STATE USING THE SETTER FUNCTION 
+    //  NB : ALWAYS UPDATE STATE USING THE SETTER FUNCTION  
+
+    // State should be kept as local as possible(closer to the component that needs it..)
     
-    // BEST Practice for updating state is through callback func => setCount(prevCount => prevCount + 1)  
+    // ALWAYS think fast which Component will need the state before declaring it
+
+    // BEST Practice for updating state is through callback func => setCount(prevCount => prevCount + 1)    
+
+    // Change of state ALWAYS cause rerender ...React renders APP component first then if state is passed to another component it triggers another render of the component state was passed as a prop.    
+
+
+    // CONDITIONAL RENDERING 
+    //  &&---RENDERS SOMETHNG OR NOT 
+    // ?--- CHOOSE btw Rendering TWO things  
+    // if-...else if.. else/  switch statements ---More than TWO options to render..
+    //  && and ? ARE be written directly in the JSX        
+    // if..else  if..else CANNOT BE WRITTEN inside JSX
+
+
 
     // NAME--equivalent props
     
@@ -43,14 +61,14 @@ const Meme = () => {
        
     //     UPDATING AN ARRAY STATE ALWAYS USE THE SPREAD OPERATOR TO AVOID DIRECT MUTATION  
 
-    // .push mutates state directly which is against principle of state  
+    // .push/.concat  mutates state directly which is against principle of state  
 
     // const [thingsArray, setThingsArray] = React.useState(["Thing 1", "Thing 2"])
     
     // function addItem() {
     //     // We'll work on this next
     //     setThingsArray(prevThingsArray => {
-    //     return     [...prevThingsArray, `Thing ${prevThingsArray.length + 1}`]})   
+    //     return     [...prevThingsArray, `Thing ${prevThingsArray.length + 1}`]})        
     // } 
     
     // const thingsElements = thingsArray.map(thing => <p key={thing}>{thing}</p>)
@@ -62,15 +80,13 @@ const Meme = () => {
 //    }            
 
 
-
-
 //   UPDATING  AN OBJECT STATE         
-
+         
 // const [contact, setContact] = React.useState({
-//   firstName: "John",
-//   lastName: "Doe",
-//   phone: "+1 (719) 555-1212",
-//   email: "itsmyrealname@example.com",
+//   firstName: "Vick",
+//   lastName: "Opiyo",
+//   phone: "0701341969",
+//   email: "opiyookoth2016@gmail.com",          
 //   isFavorite: true
 // })         
 
@@ -78,11 +94,11 @@ const Meme = () => {
 // func triggered when  star icon in contact is clicked(changes fav to true or false)
 
 // function toogleFavorite(){   
-
+           
 //    setContact( prevState =>   {
 
 //    return   {...prevState, isFavorite : !prevState.isFavorite}     
-    // }     
+    // }          
 
     //  OR if object return is a oneliner then wrap is paranthesis    ({...prevState, isFavorite : !prevState.isFavorite})
     // 1st Braces {} are interpreted as function body  
@@ -91,7 +107,7 @@ const Meme = () => {
    
 // colors  used on the icon  when icon    
 
-// let starIcon = isFavorite ? "yellow.png"  : "empty.png"
+// let starIcon = isFavorite ? "yellow.png"  : "empty.png" 
 
 // <img 
 // src={`../images/${starIcon}`} 
@@ -134,7 +150,7 @@ function getMemeImage(){
         <div  className='form'>                
 
             <input type="text"   className='form-input'  placeholder='Top Text' />  
-            <input type="text"   className='form-input'  placeholder='Bottom Text' /> 
+            <input type="text"   className='form-input'  placeholder='Bottom Text' />     
             {/* No () because as soon as it renders it call the function.It should only work when clicked  */}
             <button  onClick={getMemeImage} className='form-btn '>Generate Meme</button> 
         </div>    
