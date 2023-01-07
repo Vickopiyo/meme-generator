@@ -1,8 +1,8 @@
 import React, { useState } from 'react' 
 import memesData from "../Components/MemeData"
 
-const Meme = () => {      
-                  
+const Meme = () => {           
+                    
     // Props should always be immutable       
     // State(variables in a function)--values managed within a component which keeps changing   
 
@@ -90,7 +90,7 @@ const Meme = () => {
 //   isFavorite: true
 // })         
 
-   
+      
 // func triggered when  star icon in contact is clicked(changes fav to true or false)
 
 // function toogleFavorite(){   
@@ -114,7 +114,7 @@ const Meme = () => {
 // className="card--favorite"
 // onClick={toggleFavorite}
 // />
-
+      // COMPUTED PROPERTY --ability to turn a string to a key of an object.i.e const str = "Name"  therefore const student = {[str]: "Vick" }
 
 
  const [meme, setMeme]= useState({ 
