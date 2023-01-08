@@ -141,7 +141,6 @@ const Meme = () => {
   return (
     <section>
          
-
         <div className="form">
           <input
             type="text"
