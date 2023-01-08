@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import memesData from "../Components/MemeData";
 
 const Meme = () => {
@@ -112,21 +112,56 @@ const Meme = () => {
     toptext: "",
     bottomtext: "",
     randomImage: "http://i.imgflip.com/1bij.jpg",
-  });    
+  });        
+
+    const [allMemes, setAllMemes]= useState([])
 
 
+  useEffect(()=> {             
+
+    /**
+    useEffect takes a function as its parameter. If that function
+    returns something, it needs to be a cleanup function. Otherwise,
+    it should return nothing. If we make it an async function, it
+    automatically retuns a promise instead of a function or nothing.
+    Therefore, if you want to use async operations inside of useEffect,
+    you need to define the function separately inside of the callback
+    function, as seen below:
+    */
+
+          // async function getMemes(){
+          //   const res = await fetch("https://api.imgflip.com/get_memes")
+          //   const data = await res.json()  
+          //   setAllMemes(data.data.memes)
+          // }    
+
+          // getMemes()   
+
+          // return function(){
+          //   // I AM A CLEAN UP FUNCTION
+          // }
+    
+
+
+    fetch("https://api.imgflip.com/get_memes")
+         .then(res => res.json())       
+         .then(data => setAllMemes(data.data.memes))      
+   },[])           
+               
+  
   function getMemeImage() {
-    const memesArray = memesData.data.memes;
-
-    const randomNumber = Math.floor(Math.random() * memesArray.length);
+    
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
 
     //  Accessing random images (memes)
-    const url = memesArray[randomNumber].url;
+    const url = allMemes[randomNumber].url;
 
     //  You dont need to access previous state  so setMeme(memesArray[randomNumber].url) works fine
 
-    // setMeme(   prevMeme =>  prevMeme = memesArray[randomNumber].url)
+    // setMeme(   prevMeme =>  prevMeme = memesArray[randomNumber].url)         
 
+
+    
     setMeme((prevstate) => ({ ...prevstate, randomImage: url }));   
 
   }             
